@@ -13,6 +13,9 @@ namespace Lakewood
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Scene currentScene;
+        
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -28,7 +31,7 @@ namespace Lakewood
         /// </summary>
         protected override void Initialize()
         {
-            
+            currentScene = new TitleMenu(content);
 
             base.Initialize();
         }
@@ -54,15 +57,10 @@ namespace Lakewood
             // TODO: Unload any non ContentManager content here
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
 		{
-			
-            // TODO: Add your update logic here
+
+            currentScene.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -75,7 +73,8 @@ namespace Lakewood
         {
             GraphicsDevice.Clear(Color.Purple);
 
-            // TODO: Add your drawing code here
+            currentScene.Draw(spriteBatch, Window);
+
 
             base.Draw(gameTime);
         }
