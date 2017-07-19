@@ -28,6 +28,11 @@ namespace Lakewood
 
 
         }
+        public void Draw(SpriteBatch spriteBatch) {
+
+            spriteBatch.Draw(cursor, Mouse.GetState().Position.ToVector2() - cursorOffset, scale: new Vector2((float)0.1, (float)0.1));
+
+        }
         public bool Interacting() {
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed || TouchPanel.GetState().Count > 0) {
